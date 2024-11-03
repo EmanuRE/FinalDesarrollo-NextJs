@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -14,31 +8,25 @@ datasource db {
 }
 
 model User {
-  id    Int     @id @default(autoincrement())
-  name  String
-  email String  @unique
-}
 
-model producto {
-  id    Int     @id @default(autoincrement())
-  name  String
-  descripcion String
+    id                 Int      @id @default(autoincrement())
+  nombres            String
+  apellidos          String
+  genero             String
+  fechaNacimiento    DateTime
+  estado             Boolean
+  contabilidad       String
+  direccion          String
+  estadoInformacion  Boolean
+  fechaActualizacion DateTime @updatedAt
+  fechaCreacion      DateTime @default(now())
+  infoFinanciera     String
+  usuarioCreador     String
 }
 
 model proveedor {
-  id    Int     @id @default(autoincrement())
+  id    Int    @id @default(autoincrement())
   name  String
-  descripcion String
-
-}
-
-model Clientes {
-  id               Int       @id @default(autoincrement())
-  nombres          String
-  apellidos        String
-  genero           String
-  fechaNacimiento  DateTime
-  estado           Boolean
-
-  @@map("clientes") 
+  rol   String
+  email String @unique
 }
